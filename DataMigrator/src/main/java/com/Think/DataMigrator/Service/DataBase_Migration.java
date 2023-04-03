@@ -20,10 +20,14 @@ public class DataBase_Migration {
 		sql = new DatabaseConnector("jdbc:sqlserver://localhost\\NOD112B21B00638:1434;databaseName=BikeStores","superUser","Sql@123");
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
+//	@SuppressWarnings("unlikely-arg-type")
 	public void migrate_tables() throws SQLException {
 		
+		List<Table> table = mysql.get_tables("production");
 		
+		for(Table t: table) {
+			System.out.print(t.toString());
+		}
 		
 	}
 }

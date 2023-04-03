@@ -206,10 +206,12 @@ public class DatabaseConnector implements AutoCloseable{
 		
 	}
 	@SuppressWarnings("null")
-	public List<Table> get_tables() throws SQLException{
+	public List<Table> get_tables(String schema) throws SQLException{
+		DatabaseMetaData dm = conn.getMetaData();
 		List<Table> table = null;
 		String table_name = null;
-		ResultSet tables =  dm.getTables(null, null, null, new String[] {"TABLE"});
+		ResultSet tables = null;
+		tables =  dm.getTables(null, null, null, new String[] {"TABLE"});
 		if(table == null && table.isEmpty()) {
 			System.out.print("Cannot fetch the tables from database or database has no table");
 		}
